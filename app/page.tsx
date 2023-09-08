@@ -4,42 +4,46 @@ import Image from 'next/image'
 import { useEffect } from 'react'
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import 'slick-carousel/slick/slick.js';
+// import 'slick-carousel/slick/slick.js';
 import $ from 'jquery';
 import Link from 'next/link';
 
 export default function Home() {
-  useEffect(() => {
-  // Initialize the carousel
-  $('.carousel-container').slick({
-     infinite: true,
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  arrows: true,
-  autoplay: true,
-  autoplaySpeed: 1000,
-  responsive: [
-    {
-      breakpoint: 1200,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
-      },
-    },
-    {
-      breakpoint: 1008,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
-    },
-    {
-      breakpoint: 800,
-      settings: 'unslick',
-    },
-  ]
-  });
-}, []);
+ useEffect(() => {
+    // Check if window is defined (client-side) before initializing the carousel
+    if (typeof window !== 'undefined') {
+      import('slick-carousel/slick/slick.js').then(() => {
+        $('.carousel-container').slick({
+          infinite: true,
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          arrows: true,
+          autoplay: true,
+          autoplaySpeed: 1000,
+          responsive: [
+            {
+              breakpoint: 1200,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+              },
+            },
+            {
+              breakpoint: 1008,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+              },
+            },
+            {
+              breakpoint: 800,
+              settings: 'unslick',
+            },
+          ],
+        });
+      });
+    }
+  }, []); 
 
   return (
   <main className=" mt-7 py-5 h-[1000px] bg-[#F5F5F5] " >
