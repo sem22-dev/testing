@@ -31,24 +31,26 @@ export default  function Navbar() {
     },[showMenu])
 
     return (
-        <nav style={{backdropFilter: 'blur(4.7px)'}} className={` z-50 px-2 sm:px-6 lg:px-2 border xl:px-7 sticky top-5 mx-24 rounded-3xl bg-opacity-50 bg-white shadow-md`}>
+        <nav style={{backdropFilter: 'blur(4.7px)'}} className={` z-50 px-2 sm:px-6 lg:px-2  xl:px-7 sticky top-5 mx-24 rounded-3xl bg-white shadow-md`}>
             {/* for screen larger than md */}
-            <div className="py-3 hidden lg:flex justify-between text-lg font-medium text-grayText items-center">
+            <div className="py-3 hidden lg:flex justify-between text-base text-black items-center">
                 <div>     
-                    <Link href={'/'} className=" text-2xl text-black font-extrabold">
+                    <Link href={'/'} className=" text-2xl font-extrabold">
                         <h1>BookNJoy</h1>
                     </Link>     
                 </div>
-                <div className="flex lg:gap-20 xl:gap-36">
-                    <div className="flex items-center  gap-8">
-                        <Link href={'/'} className={`${pathname === '/' ? ' text-black' : ''}`}>Find events</Link>
-                        <Link href={'/'} className=" rounded-md py-1 px-3 bg-[#f8ec3e]">Login</Link>
-                        <Link href={'/'}><button className=" bg-black hover:bg-[#fff] hover:text-black border border-black transition-all duration-500 text-white py-1 px-4 rounded-md">List your event</button></Link>
-                    </div>
+                <div className="flex items-center gap-10">
+                    <Link href={'/'} className={`${pathname === '/' ? ' ' : ''} hover:bg-[#ccf0f0] px-2 py-1 rounded-lg`}>Events</Link>
+                    <Link href={'/'} className={`${pathname === '/' ? ' ' : ''} hover:bg-[#ccf0f0] px-2 py-1 rounded-lg`}>Music Nights</Link>
+                    <Link href={'/'} className={`${pathname === '/' ? ' ' : ''} hover:bg-[#ccf0f0] px-2 py-1 rounded-lg`}>Blogs</Link>
+                </div>
+                <div className="flex items-center  gap-4">
+                    <Link href={'/'} className=" rounded-md py-1.5 px-3 border border-slate-400 hover:bg-[#ccf0f0]">Login</Link>
+                    <Link href={'/'}><button className=" bg-brand hover:bg-hoverbrand hover:text-white border border-transparent  transition-all duration-100 text-white py-1.5 px-4 rounded-md">List your event</button></Link>
                 </div>
             </div>
             
-            {/* for screen lower than md */}
+            {/* for screen lower than md
             <div className="lg:hidden py-5 flex justify-between items-center">
                     <Link href={'/'} className="flex items-center gap-2 text-3xl font-extrabold">
                         <h1>ChatBloom</h1>
@@ -67,7 +69,7 @@ export default  function Navbar() {
                         <Link className="border-b" onClick={() => setShowMenu(false)} href={'/pricing'}>Pricing</Link>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </nav>
     )
   }
